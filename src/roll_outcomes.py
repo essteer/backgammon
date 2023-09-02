@@ -13,12 +13,11 @@ for i in range(1, 7):
             possible_rolls.append([i, j])
 
 # Call helper function to generate dict for frequencies of each possible roll
-frequencies_dict = compute_frequencies(possible_rolls)
-
+frequency_dict = compute_frequencies(possible_rolls)
 
 # Generate a dictionary of probabilities for each move option from count_dict
 probs_dict = {}
 
 print(*possible_rolls, sep="\n")
 print("")
-print(frequencies_dict)
+print(frequency_dict)
