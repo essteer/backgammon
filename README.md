@@ -39,7 +39,7 @@ For the purpose of this repo, relevant rules are as follows:
 
 **Note on possible moves**
 
-The "bar" is effectively point (space) 0, so the total range of moves that a piece could move during one turn is from 1 to 24 spaces (24 in the case of rolling [6, 6]) - though not all numbers within that range are achieveable.
+The "bar" is effectively point (space) 0, so the total range of moves that a piece could move during one turn is from 1 to 24 spaces (24 in the case of rolling [6, 6]) - though not all numbers within that range are achievable.
 
 The doubles rule makes it possible to reach 15, 16, 18, 20, and 24, as well as skewing the probabilities of reaching the face value numbers between 1 and 12.
 
