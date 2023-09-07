@@ -2,3 +2,4 @@ venv/
 .env
 .vscode/
 __pychache__/
+notes.md
