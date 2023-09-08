@@ -15,7 +15,7 @@ frequency_dict = compute_frequencies(possible_rolls)
 # Call function to generate dict for probabilities of rolls in frequency_dict
 probability_dict = compute_probabilities(frequency_dict)
 
-# Create sorted list of keys in probability_dict
+# Create sorted list of keys in probability_dict for ordered display
 probability_dict_keys = [k for k in probability_dict]
 probability_dict_keys.sort()
 

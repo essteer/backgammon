@@ -4,9 +4,9 @@ from helpers.powerset import powerset
 
 def compute_frequencies(possible_rolls) -> list:
     """
-    Takes a list of lists of integers, containing possible outcomes from two fair six-sided dice
+    possible_rolls: list of lists of integers, containing possible outcomes from two fair six-sided dice
     Calls the itertools powerset function to generate a powerset of those outcomes
-    Calculates the sum of each non-blank subset
+    Calculates the sum of each non-blank subset, representing possible move choices
     Returns a dictionary of:
     - key: an integer that can be reached from at least 1 roll combination
     - value: an integer of the number of combinations that can result in the key integer 
