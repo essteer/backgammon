@@ -45,14 +45,14 @@ The doubles rule makes it possible to reach 15, 16, 18, 20, and 24, as well as s
 
 **About this repo**
 
-The initial question this repo was set up to explore, is:
+Questions explored within this repo, include:
 
-1. Given the position of an opponent's lone piece n spaces away from a player's piece, what is the probability that the player will be able to land their piece on the opponent's position?
+1. Given the position of an opponent's lone piece _n_ spaces away from a player's piece, what is the probability that the player will be able to land their piece on the opponent's position?
 
    - For example, if the opponent's piece lies 9 spaces away, what is the probability of being able to land on that space?
 
+2. What are the combined probabilities of being able to attack an opponent's lone piece from multiple spaces belonging to the player? (An expansion of Question 1.)
+
 Subsequent questions may include:
 
-- The combined probability of attacking an opponent's piece from multiple positions.
-- The probability of attacking an opponent's piece with barriers introduced.
-- Etc.
+3. The probability of attacking an opponent's piece under movement constraints - where inbetween spaces are occupied by more than two opposing pieces, and cannot be landed on.
