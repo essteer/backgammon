@@ -3,7 +3,6 @@ from helpers.rolls import compute_rolls
 from helpers.frequencies import compute_frequencies
 from helpers.probabilities import compute_probabilities
 from helpers.combinations import combination_moves
-from pprint import pprint
 
 # Call function to generate list of lists of possible roll outcomes
 # Defaults to two six-sided dice
@@ -19,12 +18,13 @@ probability_dict = compute_probabilities(frequency_dict)
 probability_dict_keys = [k for k in probability_dict]
 probability_dict_keys.sort()
 
+# Print out probabilities for possible moves between 1 <= x <= 24
 for k in probability_dict_keys:
     print(
         f"Prob. able to land {k} space{'s' if k != 1 else ''} away: {100*probability_dict[k]:.2f}%")
 
 
-distance_1 = 8
+distance_1 = 7
 distance_2 = 12
 combination_frequencies = combination_moves(
     possible_rolls, distance_1, distance_2)
