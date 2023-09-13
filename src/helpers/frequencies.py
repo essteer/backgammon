@@ -2,14 +2,19 @@
 from helpers.powerset import powerset
 
 
-def compute_frequencies(possible_rolls) -> list:
+def compute_frequencies(possible_rolls) -> dict:
     """
-    possible_rolls: list of lists of integers, containing possible outcomes from two fair six-sided dice
-    Calls the itertools powerset function to generate a powerset of those outcomes
-    Calculates the sum of each non-blank subset, representing possible move choices
-    Returns a dictionary of:
-    - key: an integer that can be reached from at least 1 roll combination
-    - value: an integer of the number of combinations that can result in the key integer 
+    Takes a list of possible dice roll outcomes, possible_rolls
+    calls the itertools powerset function to generate a powerset of combinations from those rolls
+    calculates the sum of each non-blank subset, 
+    representing the frequency of each possible move choice, 1 <= x <= 24
+    returns a dictionary mapping rolls to roll frequencies.
+
+    Arg:
+        possible_rolls: list of lists of integers, possible outcomes from rolls of two six-sided dice
+    Returns a dictionary with:
+        key: an integer that can be reached from at least 1 roll combination
+        value: an integer of the number of combinations that can result in the key integer 
     """
     # Create empty dict to store counts of each move option
     frequency_dict = {}

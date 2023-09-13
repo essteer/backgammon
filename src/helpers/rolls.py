@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 
-def compute_rolls(num_sides=6, num_dice=2) -> list:
+def compute_rolls(num_sides=6) -> list:
     """
-    num_sides: an int of the number of sides each die has
-    num_dice: an int of the number of dice - not currently in use
-    Returns a list of lists representing the possible outcomes of rolling 
-    num_dice dice with num_sides sides each
+    Takes an integer num_sides for the number of sides for two fair dice
+    adds possible roll combinations to a list
+    marks doubles e.g., [3, 3] as choices of [3, 3, 3, 3] in line with backgammon rules
+    returns a list of possible roll combinations
+
+    Args:
+        num_sides: an integer of the number of sides each die has
+    Returns:
+        a list of lists representing the possible outcomes of rolling
+        num_dice dice with num_sides sides each
     """
     # Ensure an int is passed or convert a float
     try:

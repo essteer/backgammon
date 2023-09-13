@@ -2,13 +2,19 @@
 
 def combination_moves(possible_rolls, distance_1, distance_2=0) -> int:
     """
-    possible_rolls: list of lists of integers, possible outcomes from two fair six-sided dice
-    distance_1 and distance_2: integers 1 <= x <= 24 representing target numbers
-
+    Takes a list of possible dice roll outcomes, possible_rolls
+    and two integers, distance_1 and distance_2, 
     iterates through possible_rolls to count combinations that result in either or both targets
     does not double-count a roll outcome that could satisfy both moves
+    returns the number of combinations that result in either or 
+    both of those integers through combinations of two dice rolls.
 
-    Returns an integer, the number of rolls that permit distance_1 and/or distance_2 moves
+    Args:
+        possible_rolls: list of lists of integers, possible outcomes from rolls of two six-sided dice
+        distance_1: an integer 1 <= x <= 24 describing the first of the target numbers
+        distance_2: an integer 1 <= x <= 24 describing the second of the target numbers
+    Returns:
+        an integer, the number of rolls that permit distance_1 and/or distance_2 moves
     """
     targets = [distance_1, distance_2]
     total = 0
