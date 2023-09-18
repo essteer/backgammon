@@ -19,11 +19,11 @@ def combination_moves(possible_rolls, distance_1, distance_2=0) -> int:
     try:
         targets = [int(distance_1), int(distance_2)]
     except TypeError:
-        print("Please enter an integer 1 <= x <= 24 and try again.")
+        print("Error - distances must be integers: 1 <= x <= 24.")
 
     total = 0
 
-    for roll in possible_rolls:
+    for roll in possible_rolls[:]:
 
         if len(roll) != 2:
             # a double roll has len() == 4 (e.g. [3,3] -> [3,3,3,3])
