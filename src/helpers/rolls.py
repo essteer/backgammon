@@ -32,4 +32,4 @@ def compute_rolls(num_sides=6) -> list:
         return possible_rolls
 
     except TypeError:
-        print("Please enter an integer > 1 and try again.")
+        print("Please enter an integer <= 1 <= 24 and try again.")

@@ -16,7 +16,11 @@ def combination_moves(possible_rolls, distance_1, distance_2=0) -> int:
     Returns:
         an integer, the number of rolls that permit distance_1 and/or distance_2 moves
     """
-    targets = [distance_1, distance_2]
+    try:
+        targets = [int(distance_1), int(distance_2)]
+    except TypeError:
+        print("Please enter an integer 1 <= x <= 24 and try again.")
+
     total = 0
 
     for roll in possible_rolls:
