@@ -22,7 +22,6 @@ def combination_moves(possible_rolls: list, distance_1: int, distance_2: int = 0
         print("Error - distances must be integers: 1 <= x <= 24.")
 
     total = 0
-
     for roll in possible_rolls[:]:
 
         if len(roll) != 2:

@@ -2,7 +2,7 @@
 from helpers.combinations import combination_moves
 
 
-def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, obstacles: list = []):
+def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, obstacles: list = []) -> int:
     """
     Takes a list of possible dice roll outcomes, possible_rolls
     and two integers, distance_1 and distance_2, 
@@ -44,30 +44,27 @@ def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, ob
         except TypeError:
             print("Error - obstacles must be integers: 1 <= x <= 24.")
 
-    if targets[0] in obstacles:
-        print(f"Target space {targets[0]} is obstructed.")
-        return 0
+    for i in range(len(targets)):
+        # Check whether target spaces are obstructed
+        if targets[i] in obstacles:
+            print(f"Target space {targets[i]} is obstructed.")
+            return 0
 
     unobstructed_rolls = []
 
     for roll in possible_rolls[:]:
-
-        for i in range(len(roll)):
-            # Remove option for obstructed spaces from individual dice
-            # TODO update this to prevent e.g. 2 being moved if other die value moved first
-            if roll[i] in obstacles:
-                roll[i] = 0
-
-        if sum(roll) == targets[0]:
+        # If both (all) values in the ith roll are in the obstacles list
+        if set(roll[:]).issubset(obstacles):
+            print(roll)
+            # Those obstacles can't be avoided by changing the move order
+            # Omit this roll from possible combinations
             continue
-
+        # elif len(roll) != 2: # TODO
+            # For doubles if space 9 is blocked, [3, 3, 3, 3]
+            # effectively becomes just [3, 3], since the third and fourth [3] are inaccessible
+            # use modulo here to process TODO
         else:
             unobstructed_rolls.append(roll)
-
-    # TODO first write based on 1 target only
-    # if distance_2 == False:
-    #     combination_frequencies = combination_moves(
-    #         unobstructed_rolls, distance_1)
 
     combination_frequencies = combination_moves(
         unobstructed_rolls, distance_1, distance_2)
