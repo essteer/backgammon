@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-def compute_rolls(num_sides=6) -> list:
+def compute_rolls(num_sides: int = 6) -> list:
     """
     Takes an integer num_sides for the number of sides for two fair dice
     adds possible roll combinations to a list

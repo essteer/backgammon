@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def compute_probabilities(frequency_dict) -> dict:
+def compute_probabilities(frequency_dict: dict) -> dict:
     """
     Takes frequency_dict, a dictionary mapping roll combinations to roll frequencies
     calculates the probability of each roll 0 <= p < 1,

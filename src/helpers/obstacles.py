@@ -2,7 +2,7 @@
 from helpers.combinations import combination_moves
 
 
-def add_obstacles(possible_rolls, distance_1, distance_2=0, obstacles=[]):
+def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, obstacles: list = []):
     """
     Takes a list of possible dice roll outcomes, possible_rolls
     and two integers, distance_1 and distance_2, 
