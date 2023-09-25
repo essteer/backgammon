@@ -34,7 +34,7 @@ def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, ob
         print("No obstacles present.")
         # TODO first write based on 1 target only
         combination_frequencies = combination_moves(
-            unobstructed_rolls, distance_1)
+            filtered_rolls, distance_1)
 
         return combination_frequencies
 
@@ -50,23 +50,32 @@ def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, ob
             print(f"Target space {targets[i]} is obstructed.")
             return 0
 
-    unobstructed_rolls = []
+    # Call helper function filter_rolls
+    filtered_rolls = filter_rolls(possible_rolls[:], obstacles[:])
 
-    for roll in possible_rolls[:]:
+    # Send filtered_rolls list to combination_moves function
+    combination_frequencies = combination_moves(
+        filtered_rolls, distance_1, distance_2)
+
+    return combination_frequencies
+
+
+def filter_rolls(possible_rolls: list, obstacles: list) -> list:
+    """
+
+    """
+    filtered_rolls = []
+
+    for roll in possible_rolls:
         # If both (all) values in the ith roll are in the obstacles list
         if set(roll[:]).issubset(obstacles):
-            print(roll)
-            # Those obstacles can't be avoided by changing the move order
-            # Omit this roll from possible combinations
+            # Omit ith roll since obstacles can't be avoided by changing move order
             continue
         # elif len(roll) != 2: # TODO
             # For doubles if space 9 is blocked, [3, 3, 3, 3]
             # effectively becomes just [3, 3], since the third and fourth [3] are inaccessible
             # use modulo here to process TODO
         else:
-            unobstructed_rolls.append(roll)
+            filtered_rolls.append(roll)
 
-    combination_frequencies = combination_moves(
-        unobstructed_rolls, distance_1, distance_2)
-
-    return combination_frequencies
+    return filtered_rolls
