@@ -62,32 +62,59 @@ def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, ob
 
 def filter_rolls(possible_rolls: list, obstacles: list) -> list:
     """
-    Helper function for add_rolls
-    Takes possible_rolls and obstacles lists
-    Filters out moves that cannot be made due to obstacles
-    Returns reduced list of filtered_rolls
+    Helper function for add_rolls - takes possible_rolls and obstacles lists
+    and filters out obstructed moves
+
+    Args:
+        possible_rolls: list of lists of integers, possible outcomes from rolls of two six-sided dice
+        obstacles: list of integers, spaces with obstacles that cannot be landed on
+    Returns:
+        list of rolls modified to remove obstructed rolls
     """
-    filtered_rolls = []
 
-    for roll in possible_rolls:
-        # If both (all) values in the ith roll are in the obstacles list
-        if set(roll[:]).issubset(obstacles):
-            # Omit ith roll since obstacles can't be avoided by changing move order
-            continue
-        elif len(roll) != 2:
-            # For doubles, if e.g. space 9 is blocked, [3, 3, 3, 3]
-            # in effect becomes [3, 3], since the 3rd and 4th [3] are inaccessible
-            if roll[0]*2 in obstacles:  # replace if elif
-                # If sum obstructed, set one to 0 but keep first value TODO
-                filtered_rolls.append([roll[0], 0])
+    def is_valid_roll(roll: list) -> bool:
+        """
+        Checks whether the moves in a roll are possible.
+        E.g., with obstacles on spaces [4, 6], a roll of:
+            [6, 4] is not viable because neither move can be made, but
+            [4, 5] is viable because 5 can be played first, and then 4 from the 5 space
+        Returns:
+            True if roll is not a subset of obstacles
+            False if roll is subset of obstacles (i.e. all moves are obstructed)
+        """
+        return not set(roll[:]).issubset(obstacles)
+
+    def process_doubles(doubles: list) -> list:
+        """
+        Doubles [3, 3] grant four moves by default [3, 3, 3, 3],
+        but if e.g. space 9 is blocked, [3, 3, 3, 3] becomes [3, 3], 
+        since the 3rd and 4th 3s are inaccessible
+
+        Returns:
+            List of doubles modified to remove obstructed moves
+        """
+        output = []
+        for roll in doubles:
+            if roll[0]*2 in obstacles:
+                output.append(roll[:1])
             elif roll[0]*3 in obstacles:
-                filtered_rolls.append(roll[:2])
+                output.append(roll[:2])
             elif roll[0]*4 in obstacles:
-                filtered_rolls.append(roll[:3])
+                output.append(roll[:3])
+            else:
+                output.append(roll)
 
-            filtered_rolls.append(roll)
+        return output
 
-        else:
-            filtered_rolls.append(roll)
+    # Remove rolls that are completely obstructed
+    filtered_rolls = list(filter(is_valid_roll, possible_rolls))
+    # Separate regular rolls and doubles
+    non_doubles = [roll for roll in filtered_rolls if len(roll) == 2]
+    doubles = [roll for roll in filtered_rolls if len(roll) != 2]
+    # If there are no valid doubles remaining, return regular rolls only
+    if doubles == []:
+        return non_doubles
+    # Process any remaining doubles to strip out inaccessible moves
+    processed_doubles = process_doubles(doubles)
 
-    return filtered_rolls
+    return non_doubles + processed_doubles
