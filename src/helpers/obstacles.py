@@ -2,7 +2,10 @@
 from helpers.combinations import combination_moves
 
 
-def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, obstacles: list = []) -> int:
+def add_obstacles(possible_rolls: list[list[int]],
+                  distance_1: int,
+                  distance_2: int = 0,
+                  obstacles: list[int] = []) -> int:
     """
     Takes a list of possible dice roll outcomes, possible_rolls
     and two integers, distance_1 and distance_2, 
@@ -32,7 +35,6 @@ def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, ob
 
     if len(obstacles) == 0:
         print("No obstacles present.")
-        # TODO first write based on 1 target only
         combination_frequencies = combination_moves(
             filtered_rolls, distance_1)
 
@@ -60,7 +62,7 @@ def add_obstacles(possible_rolls: list, distance_1: int, distance_2: int = 0, ob
     return combination_frequencies
 
 
-def filter_rolls(possible_rolls: list, obstacles: list) -> list:
+def filter_rolls(possible_rolls: list[list[int]], obstacles: list[int]) -> list[list[int]]:
     """
     Helper function for add_rolls - takes possible_rolls and obstacles lists
     and filters out obstructed moves
@@ -72,7 +74,7 @@ def filter_rolls(possible_rolls: list, obstacles: list) -> list:
         list of rolls modified to remove obstructed rolls
     """
 
-    def is_valid_roll(roll: list) -> bool:
+    def is_valid_roll(roll: list[int]) -> bool:
         """
         Checks whether the moves in a roll are possible.
         E.g., with obstacles on spaces [4, 6], a roll of:
@@ -84,7 +86,7 @@ def filter_rolls(possible_rolls: list, obstacles: list) -> list:
         """
         return not set(roll[:]).issubset(obstacles)
 
-    def process_doubles(doubles: list) -> list:
+    def process_doubles(doubles: list[list[int]]) -> list[list[int]]:
         """
         Doubles [3, 3] grant four moves by default [3, 3, 3, 3],
         but if e.g. space 9 is blocked, [3, 3, 3, 3] becomes [3, 3], 

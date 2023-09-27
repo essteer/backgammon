@@ -2,7 +2,7 @@
 from helpers.powerset import powerset
 
 
-def compute_frequencies(possible_rolls: list) -> dict:
+def compute_frequencies(possible_rolls: list[list[int]]) -> dict[int, int]:
     """
     Takes a list of possible dice roll outcomes, possible_rolls
     calls the itertools powerset function to generate a powerset of combinations from those rolls
