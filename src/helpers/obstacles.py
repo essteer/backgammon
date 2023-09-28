@@ -4,7 +4,7 @@ from helpers.combinations import combination_moves
 
 def add_obstacles(possible_rolls: list[list[int]],
                   distance_1: int,
-                  distance_2: int = 0,
+                  distance_2: int = 23,
                   obstacles: list[int] = []) -> int:
     """
     Takes a list of possible dice roll outcomes, possible_rolls
@@ -54,6 +54,7 @@ def add_obstacles(possible_rolls: list[list[int]],
 
     # Call helper function filter_rolls
     filtered_rolls = filter_rolls(possible_rolls[:], obstacles[:])
+    print(filtered_rolls)
 
     # Send filtered_rolls list to combination_moves function
     combination_frequencies = combination_moves(
