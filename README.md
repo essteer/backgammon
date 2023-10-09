@@ -53,6 +53,4 @@ Questions explored within this repo, include:
 
 2. What are the combined probabilities of being able to attack an opponent's lone piece from multiple spaces belonging to the player? (An expansion of Question 1.)
 
-Subsequent questions may include:
-
-3. The probability of attacking an opponent's piece under movement constraints - where inbetween spaces are occupied by more than two opposing pieces, and cannot be landed on.
+3. The probability of attacking an opponent's piece under movement constraints - i.e., where inbetween spaces are obstructed by two or more opposing pieces, and cannot be landed on.
