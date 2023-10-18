@@ -4,7 +4,7 @@ import pandas as pd
 import seaborn as sns
 
 # Create DataFrame from csv file
-df = pd.read_csv("data/backgammon_stats.csv")
+df = pd.read_csv("../data/backgammon_stats.csv")
 
 # Set plot defaults
 sns.set_style(rc={"figure.facecolor": "#252b33",
@@ -33,11 +33,14 @@ ax.tick_params(left=False, bottom=False)
 # Set descriptors
 bar.set_title("Backgammon Moves by Probability",
               fontdict={"size": 20,
-                        "color": "#fefeff"})
+                        "color": "#fefeff"},
+              pad=20)
 bar.set_xlabel("Move (Number of Spaces)",
-               fontdict={"size": 16, "color": "#fefeff"})
+               fontdict={"size": 16, "color": "#fefeff"},
+               labelpad=10)
 bar.set_ylabel("Probability",
-               fontdict={"size": 16, "color": "#fefeff"})
+               fontdict={"size": 16, "color": "#fefeff"},
+               labelpad=10)
 plt.xticks(fontsize=16, color="#8f8f94")
 plt.yticks(fontsize=16, color="#8f8f94")
 
@@ -77,12 +80,13 @@ for bar in ax.patches:
     numerator = int(round(yval * 36))
     denominator = 36
     ax.text(bar.get_x() + bar.get_width()/2,
-            yval + 0,  # adjust height above bar
+            yval + 0.005,  # adjust height above bar
             f'${numerator}/{denominator}$', ha='center',
             va='bottom',
             color='#8f8f94',
             fontsize=12)
 
-fig.savefig("./plots/moves_by_probability.png")
+plt.tight_layout()
+fig.savefig("../images/moves_by_probability.png", dpi=300)
 
 plt.show()
