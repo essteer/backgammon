@@ -52,8 +52,8 @@ Questions explored within this repo, include:
 <figure>
     <img src="src/images/moves_by_probability.png"
          alt="Chart of Backgammon Moves by Probability"
-         width="160" 
-         height="120">
+         width="800" 
+         height="600">
     <figcaption>E.g., the probability of being able to land on an opponent's piece 9 spaces away is 5/36, or approx. 13.89%</figcaption>
 </figure>
 
