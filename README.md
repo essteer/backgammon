@@ -49,7 +49,7 @@ Questions explored within this repo, include:
 
 1. Given the position of an opponent's lone piece _n_ spaces away from a player's piece, what is the probability that the player will be able to land their piece on the opponent's position?
 
-![Backgammon Moves by Probability]("./images/moves_by_probability.png")
+![Backgammon Moves by Probability]("src\images\moves_by_probability.png")
 
 - For example, the chart shows that the probability of being able to land on an opponent's piece that is 9 spaces away is 5/36, or approximately 13.89%.
 
