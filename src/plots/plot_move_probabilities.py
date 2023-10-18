@@ -3,6 +3,16 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+# Palette
+background = "#252b33"
+lines_dark = "#45464d"
+lines_light = "#fefeff"
+blue = "#336681"
+green = "#089389"
+red = "#d34748"
+pink = "#cf82d3"
+yellow = "#e6daaa"
+
 # Create DataFrame from csv file
 df = pd.read_csv("../data/backgammon_stats.csv")
 
