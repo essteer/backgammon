@@ -18,43 +18,39 @@ Knowledge of the full rules of backgammon isn't necessary to follow this exercis
 
 For the purpose of this repo, relevant rules are as follows:
 
-- The board consists of 24 "points" (spaces).
-
 - Players roll two six-sided dice to determine the number of spaces they can move.
 
-- Moves are made separately or in combination; for a roll of [4, 5], a player can move:
+- Moves are made separately or in combination; for a roll of [4, 5] a player can move:
 
-  - one piece 4 spaces and a second piece 5 spaces, or
-  - one piece 9 spaces.
+  - one piece 4 spaces and a second piece 5 spaces (or vice versa), or
+  - one piece a total of 9 spaces.
 
-- Doubles (e.g., [5, 5]) permit four moves rather than two (i.e., [5, 5, 5, 5]), to be used in combination on between one and four pieces.
+- Players can move onto any space permitted by their dice roll, unless that space contains two or move of the opponent's pieces.
 
-- Players can move onto any space permitted by their dice roll, unless it has two or more pieces belonging to the opponent.
+**Doubles**
 
-- If a player lands on a space with the opponent's lone piece, that piece is removed to the "bar" and the opponent must re-enter it from their starting point on their next turn.
+Doubles (e.g., [5, 5]) permit four moves rather than two (i.e., [5, 5, 5, 5]), to be used in combination on between one and four pieces.
 
-**Note on possible moves**
+This makes it possible to reach 15, 16, 18, 20, and 24.
 
-The "bar" is effectively space 0, so the total range of moves a piece could travel during one turn is from 1 to 24 spaces (24 in the case of rolling [6, 6]) - but not all numbers within that range are achievable.
-
-The doubles rule makes it possible to reach 15, 16, 18, 20, and 24, as well as skewing the probabilities of reaching the face value numbers between 1 and 12.
+It also skews the probabilities of reaching the face value numbers between 1 and 12. For example, the roll [3, 3] grants the moves [3, 3, 3, 3], and could be used to move a single piece 3, 6, 9, or 12 spaces.
 
 **About this repo**
 
 Questions explored within this repo, include:
 
-1. For each possible move _n_, what is the probability of being able to move n spaces?
+1. For each possible move _n_, what is the probability of being able to move _n_ spaces?
 
    <img src="src/images/moves_by_probability.png" alt="Chart of Backgammon Moves by Probability"
         width="600" height="450">
 
-   _Example: the probability of being able to land on an opponent's piece 9 spaces away is 5/36, ~13.89%._
+   _E.g., the probability of being able to move 9 spaces: P(9) = 5/36 ≈ 13.89%._
 
-2. For each pair of moves (_m_, _n_), what is the probability of being able to move **either** _m_ **or** _n_ spaces?
+2. For each pair of possible moves (_m_, _n_), what is the probability of being able to move **either** _m_ **or** _n_ spaces?
 
    <img src="src/images/combined_probability.png" alt="Chart of Backgammon Move Pairs by Combined Probability"
         width="600" height="450">
 
-   _Example: the probability of being able to move either 4 spaces or 12 spaces is 17/36, ~47.22%._
+   _E.g. the probability of being able to move either 4 or 12 spaces: P(4 or 12) = 17/36, ≈ 47.22%._
 
 3. The probability of attacking an opponent's piece under movement constraints - i.e., where inbetween spaces are obstructed by two or more opposing pieces, and cannot be landed on.
