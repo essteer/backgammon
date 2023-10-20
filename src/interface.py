@@ -7,13 +7,12 @@ from helpers.obstacles import add_obstacles
 import numpy as np
 import pandas as pd
 
-DISTANCE_1 = 3
-DISTANCE_2 = 13
-OBSTACLES = [1, 2]
 # Rounding digits
 R = 4
 # Test distances for assert statements
 TESTS = {"A": 7, "B": 13, "C": 10, "D": 15, "E": 4}
+# Obstructed spaces for tests
+OBSTACLES = [1, 2]
 
 ##########################################################################
 # Create data
@@ -102,7 +101,7 @@ pivot_cdf = combined_df.pivot(index='Distance 1', columns='Distance 2', values='
 pivot_cdf = pivot_cdf.fillna(0.)
 
 # Save DataFrame to csv
-pivot_cdf.to_csv("./data/combined_probs.csv", index=False)
+# pivot_cdf.to_csv("./data/combined_probs.csv", index=False)
 
 ##########################################################################
 # Query data
@@ -113,22 +112,12 @@ pivot_cdf.to_csv("./data/combined_probs.csv", index=False)
 #     print(
 #         f"Prob. able to land {stat[0]} space{'s' if stat[0] != 1 else ''} away: {stat[2]:.2%}")
 
-# Test probabilities for reaching two distances
-# combination_frequencies = combination_moves(
-#     possible_rolls,
-#     DISTANCE_1,
-#     DISTANCE_2)
-
-# print(
-#     f"Prob. able to land from either {DISTANCE_1} or {DISTANCE_2} spaces away: {combination_frequencies/36:.2%}")
-
-
 # Test use of obstacles
 # obstructed_combination_frequencies = add_obstacles(
 #     possible_rolls,
-#     DISTANCE_1,
-#     DISTANCE_2,
+#     TESTS["A"],
+#     TESTS["B"],
 #     OBSTACLES)
 
 # print(
-#     f"Prob. able to land from either {DISTANCE_1} or {DISTANCE_2} spaces away: {obstructed_combination_frequencies/36:.2%}")
+#     f"Prob. able to land from either {TESTS["A"]} or {TESTS["B"]} spaces away: {obstructed_combination_frequencies/36:.2%}")
