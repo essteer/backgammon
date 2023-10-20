@@ -51,6 +51,11 @@ bar.set_ylabel("Probability",
 plt.xticks(fontsize=16, color=palette["stone"])
 plt.yticks(fontsize=16, color=palette["stone"])
 
+# Remove leading zeros from y axis labels
+ax.set_yticks([.0, .1, .2, .3, .4, .5])
+new_yticks = [label.get_text().lstrip("0") for label in ax.get_yticklabels()]
+ax.set_yticklabels(new_yticks)
+
 # Show major gridlines
 ax.grid(True,
         color=palette["grey"],

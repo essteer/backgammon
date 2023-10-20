@@ -23,7 +23,6 @@ sns.set_style(rc={"figure.facecolor": palette["dark"],
 
 # Select heatmap colours
 hmap_colours = [palette["blue"], palette["dark"], palette["red"]]
-# hmap_colours = [palette["light"], palette["blue"], palette["dark"], palette["red"]]
 # Define colour boundaries and corresponding values
 bounds = [0, 0.25, 1]
 # bounds = [0, 0.15, 0.35, 1]
