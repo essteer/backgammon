@@ -29,13 +29,9 @@ For the purpose of this repo, relevant rules are as follows:
 
 - Doubles (e.g., [5, 5]) permit four moves rather than two (i.e., [5, 5, 5, 5]), to be used in combination on between one and four pieces.
 
-- Players can only move their pieces onto a space that is either:
+- Players can move onto any space permitted by their dice roll, unless it has two or more pieces belonging to the opponent.
 
-  - empty,
-  - contains their own pieces, or
-  - has just one piece belonging to their opponent.
-
-- Upon landing on an opponent's lone piece, that piece is removed to the "bar" and the opponent must re-enter it from their starting point on their next turn.
+- If a player lands on a space with the opponent's lone piece, that piece is removed to the "bar" and the opponent must re-enter it from their starting point on their next turn.
 
 **Note on possible moves**
 
@@ -47,13 +43,18 @@ The doubles rule makes it possible to reach 15, 16, 18, 20, and 24, as well as s
 
 Questions explored within this repo, include:
 
-1. Given the position of an opponent's lone piece _n_ spaces away from a player's piece, what is the probability that the player will be able to land their piece on the opponent's position?
+1. For each possible move _n_, what is the probability of being able to move n spaces?
 
    <img src="src/images/moves_by_probability.png" alt="Chart of Backgammon Moves by Probability"
         width="600" height="450">
 
-   _E.g., the probability of being able to land on an opponent's piece 9 spaces away is 5/36, or approx. 13.89%._
+   _Example: the probability of being able to land on an opponent's piece 9 spaces away is 5/36, ~13.89%._
 
-2. What are the combined probabilities of being able to attack an opponent's lone piece from multiple spaces belonging to the player?
+2. For each pair of moves (_m_, _n_), what is the probability of being able to move **either** _m_ **or** _n_ spaces?
+
+   <img src="src/images/combined_probability.png" alt="Chart of Backgammon Move Pairs by Combined Probability"
+        width="600" height="450">
+
+   _Example: the probability of being able to move either 4 spaces or 12 spaces is 17/36, ~47.22%._
 
 3. The probability of attacking an opponent's piece under movement constraints - i.e., where inbetween spaces are obstructed by two or more opposing pieces, and cannot be landed on.
