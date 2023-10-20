@@ -10,11 +10,11 @@ The rule on rolling doubles, and the feature of being able to take the face valu
 
 Backgammon is a boardgame, the roots of which date back as many as 5,000 years ([Wikipedia](https://en.wikipedia.org/wiki/Backgammon)) to table games originating in Mesopotamia and Persia.
 
-The modern game involves two players alternating turns to roll two six-sided dice, the scores of which determine how many spaces each player may move their own pieces.
+The modern game involves two players alternating turns to roll two six-sided dice, the scores of which determine how many spaces each player may move their pieces.
 
 **Basic rules**
 
-Knowledge of the full rules of backgammon isn't necessary to follow this exercise, but one typical version (with graphics) can be accessed [here](https://www.bkgm.com/rules.html).
+Knowledge of the full rules of backgammon isn't necessary to follow this exercise, but one comprehensive version of the rules (with graphics) can be accessed [here](https://www.bkgm.com/rules.html).
 
 For the purpose of this repo, relevant rules are as follows:
 
@@ -25,7 +25,7 @@ For the purpose of this repo, relevant rules are as follows:
   - one piece 4 spaces and a second piece 5 spaces (or vice versa), or
   - one piece a total of 9 spaces.
 
-- Players can move onto any space permitted by their dice roll, unless that space contains two or move of the opponent's pieces.
+- Players can move onto any space permitted by their dice roll, unless that space contains two or more of the opponent's pieces.
 
 **Doubles**
 
@@ -44,7 +44,7 @@ Questions explored within this repo, include:
    <img src="src/images/moves_by_probability.png" alt="Chart of Backgammon Moves by Probability"
         width="600" height="450">
 
-   _E.g., the probability of being able to move 9 spaces: P(9) = 5/36 ≈ 13.89%._
+   _E.g. the probability of being able to move 9 spaces: P(9) = 5/36 ≈ 13.89%._
 
 2. For each pair of possible moves (_m_, _n_), what is the probability of being able to move **either** _m_ **or** _n_ spaces?
 
@@ -53,4 +53,4 @@ Questions explored within this repo, include:
 
    _E.g. the probability of being able to move either 4 or 12 spaces: P(4 or 12) = 17/36 ≈ 47.22%._
 
-3. The probability of attacking an opponent's piece under movement constraints - i.e., where inbetween spaces are obstructed by two or more opposing pieces, and cannot be landed on.
+3. For each possible move _n_, what is the probability of being able to move _n_ spaces under the constraint of _k_ obstacles?
