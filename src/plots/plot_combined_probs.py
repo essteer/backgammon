@@ -45,6 +45,7 @@ hmap = sns.heatmap(df,
                    linewidth=0.5, 
                    cmap=custom_cmap, 
                    linecolor=palette["dark"],
+                   cbar_kws={"pad": 0.02}
                    )
 
 # Remove leading zeros from annotations
