@@ -58,14 +58,14 @@ cbar = ax.collections[0].colorbar
 cbar.ax.tick_params(right=False)
 
 # Set descriptors
-hmap.set_title("Combined Probabilities (Move 1 or 2)",
+hmap.set_title("Combined Probabilities - P(A or B)",
               fontdict={"size": 20,
                         "color": palette["light"]},
               pad=20)
-hmap.set_xlabel("Move 1",
+hmap.set_xlabel("Move A",
                fontdict={"size": 16, "color": palette["light"]},
                labelpad=10)
-hmap.set_ylabel("Move 2",
+hmap.set_ylabel("Move B",
                fontdict={"size": 16, "color": palette["light"]},
                labelpad=10)
 

@@ -51,6 +51,6 @@ Questions explored within this repo, include:
    <img src="src/images/combined_probability.png" alt="Chart of Backgammon Move Pairs by Combined Probability"
         width="600" height="450">
 
-   _E.g. the probability of being able to move either 4 or 12 spaces: P(4 or 12) = 17/36, ≈ 47.22%._
+   _E.g. the probability of being able to move either 4 or 12 spaces: P(4 or 12) = 17/36 ≈ 47.22%._
 
 3. The probability of attacking an opponent's piece under movement constraints - i.e., where inbetween spaces are obstructed by two or more opposing pieces, and cannot be landed on.
