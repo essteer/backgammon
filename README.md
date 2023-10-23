@@ -2,15 +2,11 @@
 
 **Overview**
 
+Backgammon is a dice-based boardgame, the roots of which date back as many as 5,000 years ([Wikipedia](https://en.wikipedia.org/wiki/Backgammon)) to table games originating in Mesopotamia and Persia.
+
 The use of dice in backgammon presents questions of discrete probability, and also a simple scenario for experimenting with data analysis and visualisation.
 
 The rule on rolling doubles, and the feature of being able to take the face value of each die alone or in combination (see below), make this a (marginally) more interesting subject than typical probability calculations for two six-sided dice.
-
-**Background**
-
-Backgammon is a boardgame, the roots of which date back as many as 5,000 years ([Wikipedia](https://en.wikipedia.org/wiki/Backgammon)) to table games originating in Mesopotamia and Persia.
-
-The modern game involves two players alternating turns to roll two six-sided dice, the scores of which determine how many spaces each player may move their pieces.
 
 **Basic rules**
 
@@ -31,9 +27,7 @@ For the purpose of this repo, relevant rules are as follows:
 
 Doubles (e.g., [5, 5]) permit four moves rather than two (i.e., [5, 5, 5, 5]), to be used in combination on between one and four pieces.
 
-This makes it possible to reach 15, 16, 18, 20, and 24.
-
-It also skews the probabilities of reaching the face value numbers between 1 and 12. For example, the roll [3, 3] grants the moves [3, 3, 3, 3], and could be used to move a single piece 3, 6, 9, or 12 spaces.
+This makes it possible to reach 15, 16, 18, 20, and 24, but also skews the probabilities of reaching numbers between 1 and 12. For example, the roll [3, 3] grants the moves [3, 3, 3, 3], and could be used to move a single piece 3, 6, 9, or 12 spaces.
 
 **About this repo**
 
