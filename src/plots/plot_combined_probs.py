@@ -58,16 +58,17 @@ cbar = ax.collections[0].colorbar
 cbar.ax.tick_params(right=False)
 
 # Set descriptors
-hmap.set_title("Combined Probabilities - P(A or B)",
+hmap.set_title("Move Pairs by Probability - P(m or n)",
               fontdict={"size": 20,
                         "color": palette["light"]},
               pad=20)
-hmap.set_xlabel("Move A",
+hmap.set_xlabel("n",
                fontdict={"size": 16, "color": palette["light"]},
                labelpad=10)
-hmap.set_ylabel("Move B",
+hmap.set_ylabel("m",
                fontdict={"size": 16, "color": palette["light"]},
-               labelpad=10)
+               labelpad=10,
+               rotation=0)
 
 plt.xticks(fontsize=16, color=palette["stone"])
 plt.yticks(fontsize=16, color=palette["stone"], rotation=0)
@@ -77,8 +78,8 @@ cbar.set_ticks([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7])
 cbar.set_ticklabels([".1", ".2", ".3", ".4", ".5", ".6", ".7"])
 
 plt.tight_layout()
-fig.savefig("../images/combined_probability.png", 
-            dpi=300,
-            bbox_inches="tight")
+# fig.savefig("../images/combined_probability.png", 
+#             dpi=300,
+#             bbox_inches="tight")
 
 plt.show()

@@ -38,16 +38,17 @@ sns.despine(offset=10)
 ax.tick_params(left=False, bottom=False)
 
 # Set descriptors
-bar.set_title("Backgammon Moves by Probability",
+bar.set_title("Moves by Probability - P(n)",
               fontdict={"size": 20,
                         "color": palette["light"]},
               pad=20)
-bar.set_xlabel("Move (Number of Spaces)",
+bar.set_xlabel("n",
                fontdict={"size": 16, "color": palette["light"]},
                labelpad=10)
-bar.set_ylabel("Probability",
+bar.set_ylabel("P(n)",
                fontdict={"size": 16, "color": palette["light"]},
-               labelpad=10)
+               labelpad=10, 
+               rotation=0)
 plt.xticks(fontsize=16, color=palette["stone"])
 plt.yticks(fontsize=16, color=palette["stone"])
 
