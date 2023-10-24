@@ -10,7 +10,7 @@ import pandas as pd
 # Rounding digits
 R = 4
 # Test distances for assert statements
-TESTS = {"A": 7, "B": 13, "C": 10, "D": 15, "E": 4}
+TESTS = {"A": 7, "B": 13, "C": 10, "D": 15, "E": 4, "F": 0}
 # Obstructed spaces for tests
 OBSTACLES = [1, 2]
 
@@ -95,19 +95,45 @@ for d1, d2 in zip(distance_1.flatten(), distance_2.flatten()):
     results.append([d1, d2, combined_prob])
 
 # Create DataFrame for combined_probabilities
-combined_df = pd.DataFrame(results, columns=['Distance 1', 'Distance 2', 'Combined Probability'])
+combined_df = pd.DataFrame(results, columns=["Distance 1", "Distance 2", "Combined Probability"])
 # Pivot the DataFrame
-pivot_cdf = combined_df.pivot(index='Distance 1', columns='Distance 2', values='Combined Probability')
+pivot_cdf = combined_df.pivot(index="Distance 1", columns="Distance 2", values="Combined Probability")
 pivot_cdf = pivot_cdf.fillna(0.)
 
 # Save DataFrame to csv
 # pivot_cdf.to_csv("./data/combined_probs.csv", index=False)
 
+# ~~~ Obstructed probabilities ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# List of possible distances and obstacles
+distances = np.array([key for key in sorted(freq_dict.keys())])
+# Create meshgrid of distance-obstacle pairs
+distance_1, obstacle = np.meshgrid(distances, distances)
+
+obstacle_results = []
+# Iterate through each distance-obstacle pair
+for d1, o1 in zip(distance_1.flatten(), obstacle.flatten()):
+    # Calculate combined frequencies
+    obstructed_freq = add_obstacles(possible_rolls, d1, 0, [o1])
+    # Calculate combined probabilities
+    obstructed_prob = np.round(obstructed_freq / 36, R)
+    # Append to results
+    obstacle_results.append([d1, o1, obstructed_prob])
+
+# Create DataFrame for obstructed_probabilities
+obstructed_df = pd.DataFrame(obstacle_results, columns=["Distance", "Obstacle", "Obstructed Probability"])
+# Pivot the DataFrame
+pivot_odf = obstructed_df.pivot(index="Distance", columns="Obstacle", values="Obstructed Probability")
+pivot_odf = pivot_odf.fillna(0.)
+
+# Save DataFrame to csv
+pivot_odf.to_csv("./data/obstructed_probs.csv", index=False)
+
 ##########################################################################
-# Query data
+# Query individual data points
 ##########################################################################
 
-# Print probabilities for possible moves between 1 <= x <= 24
+# Print probabilities for possible moves between [1, 24]
 # for stat in stats_list:
 #     print(
 #         f"Prob. able to land {stat[0]} space{'s' if stat[0] != 1 else ''} away: {stat[2]:.2%}")

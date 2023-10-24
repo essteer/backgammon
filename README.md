@@ -62,7 +62,7 @@ Note that an implication of the separation of dice values is that the sum of pro
 
 ### For each pair of possible moves (_m_, _n_), what is the probability of being able to move **either** _m_ **or** _n_ spaces?
 
-Denoted P(_m_ or _n_), this is the probability _P_ of being able to move either a piece either _m_ or _n_ spaces, within the range of possible moves.
+Denoted P(_m_ or _n_), this is the probability _P_ of being able to move a piece either _m_ or _n_ spaces, within the range of possible moves.
 
 The probability is calculated as: P(_m_ or _n_) = P(_m_) + P(_n_) - P(_m_ and _n_).
 
@@ -75,17 +75,15 @@ The heatmap below depicts P(_m_ or _n_).
 <img src="src/images/combined_probability.png" alt="Chart of Backgammon Move Pairs by Combined Probability"
         width="600" height="450">
 
-For example, for m = 4 and n = 12 the probability of being able to move either 4 or 12 spaces is: P(4 or 12) = 17/36 ≈ 47.22%.
+For example, for _m_ = 4 and _n_ = 12 the probability of being able to move either 4 or 12 spaces is: P(4 or 12) = 17/36 ≈ 47.22%.
 
-In the bar graph above, the individual probabilities were P(4) = 15/36, and P(12) = 3/36. There exists one instance of overlap in which both 4 and 12 can be achieved: a double 4 for [4, 4, 4, 4].
-
-Therefore, P(4 or 12) = P(4) + P(12) - P(4 and 12) = 15/36 + 3/36 - 1/36 = 17/36 ≈ 47.22%.
+In the bar graph displayed earlier, the individual probabilities were P(4) = 15/36, and P(12) = 3/36. There exists one instance of overlap in which both 4 and 12 can be achieved: a double 4 for [4, 4, 4, 4]. Therefore, P(4 or 12) = P(4) + P(12) - P(4 and 12) = 15/36 + 3/36 - 1/36 = 17/36 ≈ 47.22%.
 
 Compared with the single P(_n_) case, probabilities under the P(_m_ or _n_) case exhibit the most significant increases for the face values of the dice (from 1 to 6), followed by move pairs involving sums of the dice (from 7 to 12).
 
 Beyond those values, since the values 15, 16, 18, 20, and 24 can only be achieved via doubles, (_m_, _n_) pairs involving these values see either a marginal or no probability increase compared with the standalone case.
 
-To illustrate, 16 can only be achieved through a double 4, for [4, 4, 4, 4]. 16 is contingent on a subset of outcomes that achieve 4, and so P(4 or 16) = P(4) = 15/36.
+To illustrate, 16 can only be achieved through a double 4, for [4, 4, 4, 4]. 16 is contingent on a subset of outcomes that achieve 4, and so P(4 or 16) = P(4) = 15/36 ≈ 41.67%.
 
 Likewise, the outcome 24 is contingent on rolling double 6, for [6, 6, 6, 6]. Pairing this _m_ with any _n_ that is not a multiple of 6, becomes a strict either or case with no overlap.
 
