@@ -79,7 +79,7 @@ For example, take _m_ = 5, and _n_ = 7. A roll of [5, 2] could be used to satisf
 
 The heatmap below depicts P(_m_ or _n_).
 
-<img src="src/images/combined_probability.png" alt="Chart of Backgammon Move Pairs by Combined Probability"
+<img src="src/images/combined_prob_frac.png" alt="Chart of Backgammon Move Pairs by Combined Probability"
         width="600" height="450">
 
 For example, for _m_ = 4 and _n_ = 12 the probability of being able to move either 4 or 12 spaces is: P(4 or 12) = 17/36 ≈ 47.22%.
