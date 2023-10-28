@@ -6,7 +6,7 @@ Backgammon is a dice-based boardgame, the roots of which date back as many as 5,
 
 The use of dice in backgammon presents questions of discrete probability, and also a simple scenario for experimenting with data analysis and visualisation.
 
-The rule on rolling doubles, and the feature of being able to take the face value of each die alone or in combination (see below), make this a (marginally) more interesting subject than typical probability calculations for two six-sided dice.
+The rule on rolling doubles, and the feature of being able to take the face value of each die alone or in combination (see below), make this a (marginally) more interesting subject than classic probability calculations for two six-sided dice.
 
 **Basic rules**
 
@@ -46,19 +46,26 @@ The bar graph below depicts _P(n)_.
 <img src="src/images/moves_by_probability.png" alt="Chart of Backgammon Moves by Probability"
         width="600" height="450">
 
-For example, the probability of being able to move 9 spaces is: P(9) = 5/36 ≈ 13.89%. In addition to the four standard dice outcomes that sum to 9, [3, 6], [4, 5], [5, 4], and [6, 3], there is an exta means via [3, 3], since this grants the moves [3, 3, 3, 3], and the player could apply three of those values to reach 9.
+For example, for n = 9: P(9) = 5/36 ≈ 13.89%. In addition to the four standard dice outcomes that sum to 9, [3, 6], [4, 5], [5, 4], and [6, 3], there is an exta means via [3, 3], since this grants the moves [3, 3, 3, 3], and the player could apply three of those values to reach 9.
 
-As detailed above, the doubles rule makes possible five additional moves beyond 12 spaces. These are achieved through combinations of the moves presented via double 4 ([4, 4, 4, 4], for 16), double 5 ([5, 5, 5, 5], for 15 or 20) and double 6 ([6, 6, 6, 6], for 18 or 24).
+Doubles make possible five additional moves beyond 12 spaces. These are achieved through combinations of the moves presented via double 4 ([4, 4, 4, 4], for 16), double 5 ([5, 5, 5, 5], for 15 or 20) and double 6 ([6, 6, 6, 6], for 18 or 24).
 
-There is just a 1/36 chance of reaching each of the values 15, 16, 18, 20, and 24, since this is the probability of rolling any given double. Since, for example, 18 and 24 are both reached via double 6, the probability of **being able to** move that number of spaces is what is related here. Whether a player does opt for either is independent of the probability of being presented with those choices.
+There is a 1/36 chance of rolling any given double, and thus of reaching each of the values 15, 16, 18, 20, and 24, that can only be reached via doubles. Take 18 and 24: both are reached via double 6, so the probability of **being able to** move that number of spaces is what is related here. Whether a player does opt for either is independent of the probability of being presented with those choices.
 
-The option to separate the face values of each die presents a further departure from the standard probabilities that result from a simple sum of two dice values.
+The option to separate the face values of each die presents a significant departure from the standard probabilities that result from a simple sum of two dice values, as seen below.
 
-For example, the roll [6, 1] not only presents the outcome 7, but also 1 and 6 as separate outcomes that could be used for different moves.
+<img src="src/images/moves_by_probs_overlay.png" alt="Backgammon Probabilities vs Classic Dice"
+        width="600" height="450">
+
+An implication is that the sum of probabilities for the 17 possible moves presented here is greater than 1 - how can this be?
+
+The reason is that the move options do not occupy the same sample space as the rolls; the probability of each of the 36 possible dice rolls is still 1/36, and still sums to exactly 1.
+
+However, unlike the rolls, the move options aren't mutually exclusive: for any given roll, a player has three choices (or more for doubles) of how to move their pieces - choices which overlap with move options presented by other roll outcomes, to varying degrees.
+
+As an example, the roll [6, 1] not only presents the outcome 7, but also 1 and 6 as separate outcomes that could be used for different moves.
 
 This significantly increases the probabilities of achieving each of the numbers from 1 to 6, as compared with a simple sum of values - note that 1 has probability 0 when taking the sum of two dice values, since even the lowest outcome [1, 1] sums to 2, whereas here there is an 11/36 chance (≈ 30.56%) of being able to select 1 as an outcome.
-
-Note that an implication of the separation of dice values is that the sum of probabilities for all of the 17 possible moves is greater than 1. This is a feature of the rule permitting selection between the two dice values or their sum when applied to moves; the probability of each of the 36 possible dice outcomes is still 1/36, and sums to exactly 1.
 
 ### For each pair of possible moves (_m_, _n_), what is the probability of being able to move **either** _m_ **or** _n_ spaces?
 
