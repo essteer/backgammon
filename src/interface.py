@@ -108,34 +108,43 @@ pivot_cprob_df = combined_prob_df.pivot(index="Distance 1", columns="Distance 2"
 pivot_cprob_df = pivot_cprob_df.fillna(0.)
 
 # Save DataFrames to csv
-pivot_cfreq_df.to_csv("./data/combined_freqs.csv", index=False)
+# pivot_cfreq_df.to_csv("./data/combined_freqs.csv", index=False)
 # pivot_cprob_df.to_csv("./data/combined_probs.csv", index=False)
 
 # ~~~ Obstructed probabilities ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # # List of possible distances and obstacles
-# distances = np.array([key for key in sorted(freq_dict.keys())])
+distances = np.array([key for key in sorted(freq_dict.keys())])
 # # Create meshgrid of distance-obstacle pairs
-# distance_1, obstacle = np.meshgrid(distances, distances)
+distance_1, obstacle = np.meshgrid(distances, distances)
 
-# obstacle_results = []
+obstacle_freq_results = []
+obstacle_prob_results = []
 # # Iterate through each distance-obstacle pair
-# for d1, o1 in zip(distance_1.flatten(), obstacle.flatten()):
-#     # Calculate combined frequencies
-#     obstructed_freq = add_obstacles(possible_rolls, d1, 0, [o1])
-#     # Calculate combined probabilities
-#     obstructed_prob = np.round(obstructed_freq / 36, R)
-#     # Append to results
-#     obstacle_results.append([d1, o1, obstructed_prob])
+for d1, o1 in zip(distance_1.flatten(), obstacle.flatten()):
+    # Calculate obstacle frequencies
+    obstacle_freq = add_obstacles(possible_rolls, d1, 0, [o1])
+    obstacle_freq_results.append([d1, o1, obstacle_freq])
+    # Calculate obstacle probabilities
+    obstacle_prob = np.round(obstacle_freq / 36, R)
+    # Append to results
+    obstacle_prob_results.append([d1, o1, obstacle_prob])
 
-# # Create DataFrame for obstructed_probabilities
-# obstructed_df = pd.DataFrame(obstacle_results, columns=["Distance", "Obstacle", "Obstructed Probability"])
-# # Pivot the DataFrame
-# pivot_odf = obstructed_df.pivot(index="Distance", columns="Obstacle", values="Obstructed Probability")
-# pivot_odf = pivot_odf.fillna(0.)
+# Create DataFrame for obstacle frequencies
+obstacle_freq_df = pd.DataFrame(obstacle_freq_results, columns=["Distance", "Obstacle", "Obstructed Frequency"])
+# Pivot the DataFrame
+pivot_ofreq_df = obstacle_freq_df.pivot(index="Distance", columns="Obstacle", values="Obstructed Frequency")
+pivot_ofreq_df = pivot_ofreq_df.fillna(0.)
+
+# Create DataFrame for obstacle probabilities
+obstacle_prob_df = pd.DataFrame(obstacle_prob_results, columns=["Distance", "Obstacle", "Obstructed Probability"])
+# Pivot the DataFrame
+pivot_oprob_df = obstacle_prob_df.pivot(index="Distance", columns="Obstacle", values="Obstructed Probability")
+pivot_oprob_pdf = pivot_oprob_df.fillna(0.)
 
 # # Save DataFrame to csv
-# pivot_odf.to_csv("./data/obstructed_probs.csv", index=False)
+pivot_ofreq_df.to_csv("./data/obstructed_freqs.csv", index=False)
+pivot_oprob_df.to_csv("./data/obstructed_probs.csv", index=False)
 
 ##########################################################################
 # Query individual data points
