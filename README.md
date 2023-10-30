@@ -6,7 +6,7 @@ Backgammon is a dice-based boardgame, the roots of which date back as many as 5,
 
 The use of dice in backgammon presents questions of discrete probability, and also a simple scenario for experimenting with data analysis and visualisation.
 
-The rule on rolling doubles, and the feature of being able to take the face value of each die alone or in combination (see below), make this a (marginally) more interesting subject than classic probability calculations for two six-sided dice.
+The rules on rolling doubles, and of being able to take the face values the dice alone or in combination (see below), make this a (marginally) more interesting subject than classic probability calculations for two six-sided dice.
 
 **Basic rules**
 
@@ -41,12 +41,12 @@ This repo explores the probabilities of being able to:
 
 Denoted P(_n_), this is the probability _P_ of being able to move a piece _n_ spaces, within the range of possible moves. Move _n_ is possible if either die shows _n_ as its face value, or if the dice values can be summed to _n_.
 
-The bar graph below depicts _P(n)_.
+The bar graph below depicts P(_n_).
 
 <img src="src/images/moves_by_probability.png" alt="Chart of Backgammon Moves by Probability"
         width="600" height="450">
 
-For example, for n = 9: P(9) = 5/36 ≈ 13.89%. In addition to the four standard dice outcomes that sum to 9, [3, 6], [4, 5], [5, 4], and [6, 3], there is an exta means via [3, 3], since this grants the moves [3, 3, 3, 3], and the player could apply three of those values to reach 9.
+For example, for _n_ = 9: P(9) = 5/36 ≈ 13.89%. In addition to the four standard dice outcomes that sum to 9, [3, 6], [4, 5], [5, 4], and [6, 3], there is an exta means via [3, 3], since this grants the moves [3, 3, 3, 3], and the player could apply three of those values to reach 9.
 
 Doubles make possible five additional moves beyond 12 spaces. These are achieved through combinations of the moves presented via double 4 ([4, 4, 4, 4], for 16), double 5 ([5, 5, 5, 5], for 15 or 20) and double 6 ([6, 6, 6, 6], for 18 or 24).
 
@@ -75,7 +75,7 @@ The probability is calculated as: P(_m_ or _n_) = P(_m_) + P(_n_) - P(_m_ and _n
 
 Since we are concerned with the probability that either _m_ or _n_ is achieved, the probability that both occur is subtracted so as to avoid double-counting.
 
-For example, take _m_ = 5, and _n_ = 7. A roll of [5, 2] could be used to satisfy either 5 or 7, but it is just one roll outcome, and so should be counted only once. By the same rationale, if n = 2 and we roll a double 2 for [2, 2, 2, 2], this is also one outcome that satisfies the condition, regardless of the fact that there exist four different ways to select 2 from [2, 2, 2, 2].
+For example, take _m_ = 5, and _n_ = 7. A roll of [5, 2] could be used to satisfy either 5 or 7, but it is just one roll outcome, and so should be counted only once. By the same rationale, if _n_ = 2 and we roll a double 2 for [2, 2, 2, 2], this is also one outcome that satisfies the condition, regardless of the fact that there exist four different ways to select 2 from [2, 2, 2, 2].
 
 The heatmap below depicts P(_m_ or _n_).
 
@@ -96,8 +96,27 @@ Likewise, the outcome 24 is contingent on rolling double 6, for [6, 6, 6, 6]. Pa
 
 For _m_ = 24, _n_ = 7: P(24 or 7) = 1/36 + 6/36 - 0/36 = 7/36 ≈ 19.44%.
 
-### For each possible move _n_, what is the probability of being able to move _n_ spaces under the constraint of _k_ obstacles?
+### For each possible move _n_, what is the probability of being able to move _n_ spaces under the constraint of obstacle _k_?
 
-P(_n_ not _k_)
+I have borrowed the standard notation P(_n_ not _k_) here, though the actual probability applied to backgammon is less straightforward.
 
-_More coming soon._
+First the standard definition: P(_n_ not _k_) is the probability of _n_ occuring, and not _k_, calculated as: P(_n_ not _k_) = P(_n_) - P(_n_ and _m_).
+
+For example, for P(6 not 5) we would take the probability P(6), and subtract instances of 6 that rely on 5 (i.e., the pairs [1, 5] and [5, 1]).
+
+For an obstructed backgammon space _k_ = 5, however, 6 could still be reached due to the ability to select the dice values in either order: in this case, by moving 1 and then 5 to reach 6, since this will not result in the piece landing on the 5 space.
+
+The effect of obstructed spaces comes into play when multiples are involved: taking 6 again, rolling [3, 3] for _k_ = 3 succeeds in blocking the move, since the piece can't avoid landing on the obstructed 3 space through any combination of the dice values.
+
+The heatmap below depicts P(_n_ not _k_).
+
+<img src="src/images/obstructed_prob_frac.png" alt="Chart of Backgammon Move and Obstacle Pairs by Combined Probability"
+        width="600" height="450">
+
+As is to be expected, for any case where _n_ = _k_, P(_n_ not _k_) = 0.
+
+The heatmap shows that the introduction of obstacles results in three broad groups of probabilities: for moves 1 to 6, 7 to 12, and 15 to 24.
+
+The higher-valued doubles moves from 15 to 24 become even less probable, since an obstruction of any multiple of their factors makes them inaccessible (e.g. for _k_ = 5, a double 5 gives [5, 5, 5, 5], but these cannot be used to reach 5, 10, 15, or 20).
+
+Of the values from 1 to 12, there is a slight reduction in probability for cases where doubles become inaccessible or _n_ = _k_, but otherwise the effect of the obstacle is mitigated since the player can reverse the move order for non-double cases.
