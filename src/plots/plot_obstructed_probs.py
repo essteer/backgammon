@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 from typing import Literal
 
-PLOT: Literal["decimal", "fraction"] = "decimal"
+PLOT: Literal["decimal", "fraction"] = "fraction"
 
 palette = {
     "dark": "#252b33", "grey": "#45464d",
@@ -99,8 +99,9 @@ if PLOT == "decimal":
     cbar.set_ticklabels([".1", ".2", ".3", ".4"])
 
 elif PLOT == "fraction":
-    cbar.set_ticks([3, 6, 9, 12, 16])
-    cbar.set_ticklabels(["1/36", "1/6", "1/4", "1/3", "4/9"])
+    # cbar.set_ticks([1, 3, 6, 9, 12, 15])
+    cbar.set_ticks([1, 4, 7, 10, 13, 16])
+    cbar.set_ticklabels(["1/36", "1/9", "7/36", "10/36", "13/36", "4/9"])
 
 plt.tight_layout()
 
