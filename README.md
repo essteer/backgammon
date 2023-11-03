@@ -21,7 +21,10 @@ For the purpose of this repo, relevant rules are as follows:
   - one piece 4 spaces and a second piece 5 spaces (or vice versa), or
   - one piece a total of 9 spaces.
 
-- Players can move onto any space permitted by their dice roll, unless that space contains two or more of the opponent's pieces.
+- A space that contains two or more of the opponent's pieces is obstructed; returning to the [4, 5] example, if the opponent had two pieces on the 4 space, the player:
+
+  - could not move one piece in the sequence [4, 5], since that would require landing on an obstructed space, but
+  - could still move one piece [5, 4] since this would move through but not onto the obstructed space.
 
 **Doubles**
 
@@ -39,7 +42,7 @@ This repo explores the probabilities of being able to:
 
 ### For each possible move _n_, what is the probability of being able to move _n_ spaces?
 
-Denoted P(_n_), this is the probability _P_ of being able to move a piece _n_ spaces, within the range of possible moves. Move _n_ is possible if either die shows _n_ as its face value, or if the dice values can be summed to _n_.
+Assuming there are no obstructed spaces, P(_n_) is the probability _P_ of being able to move a piece _n_ spaces, within the range of possible moves. Move _n_ is possible if either die shows _n_ as its face value, or if the dice values can be summed to _n_.
 
 The bar graph below depicts P(_n_).
 
@@ -120,3 +123,13 @@ The heatmap shows that the introduction of obstacles results in three broad grou
 The higher-valued doubles moves from 15 to 24 become even less probable, since an obstruction of any multiple of their factors makes them inaccessible (e.g. for _k_ = 5, a double 5 gives [5, 5, 5, 5], but these cannot be used to reach 5, 10, 15, or 20).
 
 Of the values from 1 to 12, there is a slight reduction in probability for cases where doubles become inaccessible or _n_ = _k_, but otherwise the effect of the obstacle is mitigated since the player can reverse the move order for non-double cases.
+
+## Conclusion
+
+These examples use a simplified model of backgammon, to consider probability with regards to the moves of just one or two pieces. In a real game, each player has up to 15 pieces across up to 24 spaces at any one time, and so the range of movements and obstructed spaces is much more complex.
+
+Still, the findings make clear the divergence from standard probability outcomes for two six-sided dice, and demonstrate that the effect of being able to use roll outcomes individually or in combination is to significantly increase the probability of being able to move between 1 and 6 spaces relative to other moves, at the same time that the range of possible outcomes is extended due to double rolls.
+
+If a player lands their piece on a space containing one of their opponent's pieces - but not two or more, since that would obstruct the space - the opponent's piece is removed from the board and must re-enter from the start on the opponent's next turn.
+
+This suggests that a player who is risk-averse in defence and aggressive in offence, should seek to maintain a greater distance between their lone pieces and their opponent's pieces, but create obstacles of their own pieces up close to their opponent, to maximise the chance of being able to remove the opponent's pieces from the board.
